@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Lawrence&#39;s Blogs">
 <meta property="og:description" content="使用Hexo+Github搭建属于自己的个人博客，从此不再羡慕别人。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T08:17:45.038Z">
+<meta property="og:updated_time" content="2018-05-22T08:43:59.229Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github搭建个人博客">
 <meta name="twitter:description" content="使用Hexo+Github搭建属于自己的个人博客，从此不再羡慕别人。">
@@ -377,13 +377,17 @@
 <p>执行如下指令后浏览器输入:<code>http://localhost:4000</code>查看本地博客是否可以访问</p>
 <h3 id="发布博客到Github"><a href="#发布博客到Github" class="headerlink" title="发布博客到Github"></a>发布博客到Github</h3><p>完成了博客的初始化后，我们可以把我们搭建的博客发布到Github，打开<code>Blog</code>文件夹下的<code>_config.yml</code>文件，找到<code>deploy</code>，配置如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/your_user_name/you_user_name.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>修改完<code>_config.yml</code>文件后，执行如下指令，完成Hexo发布</p>
+<p>要提交到Github上需要安装hexo-deployer-git插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>等待hexo-deployer-git插件安装完成后，执行如下指令，即可完成Hexo发布</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ Hexo clean</span><br><span class="line">$ Hexo g</span><br><span class="line">$ Hexo d</span><br></pre></td></tr></table></figure>
-<p>找这不时耐耐心等待，如果遇到要输入Github账号用户名和密码，输入即可发布完成。</p>
+<p>到了这一步后耐心等待，如果遇到要输入Github账号用户名和密码，输入即可发布完成。</p>
 <h3 id="修改Hexo默认主题"><a href="#修改Hexo默认主题" class="headerlink" title="修改Hexo默认主题"></a>修改Hexo默认主题</h3><p>我这里的博客主题是使用了<code>next</code>主题，需要自定义主题的可以到以下地址查看教程修改: </p>
 <p><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">http://theme-next.iissnan.com/</a><br><a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
 <h3 id="Hexo-写文章"><a href="#Hexo-写文章" class="headerlink" title="Hexo 写文章"></a>Hexo 写文章</h3><p>博客搭建完成后，可以开心的记录你的学习啊，个人心得什么的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd Blog</span><br><span class="line">$ Hexo new post &quot;xxxxxxx&quot;</span><br></pre></td></tr></table></figure>
+<p>完成文章编写后，可以重新发布到Github，指令如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ Hexo clean</span><br><span class="line">$ Hexo g</span><br><span class="line">$ Hexo d</span><br></pre></td></tr></table></figure>
 
       
     </div>
