@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://CoderLawrence.github.io/"/>
-  <updated>2018-08-11T07:13:01.826Z</updated>
+  <updated>2020-03-03T01:52:55.357Z</updated>
   <id>https://CoderLawrence.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>block为什么要用copy来修饰</title>
+    <link href="https://CoderLawrence.github.io/2020/03/03/block%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8copy/"/>
+    <id>https://CoderLawrence.github.io/2020/03/03/block为什么要用copy/</id>
+    <published>2020-03-03T01:11:40.000Z</published>
+    <updated>2020-03-03T01:52:55.357Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前段时间因为打算换工作，本来以为我已经复习好做好面试的准备了，结果约了一场面试，面试官问我了这个问题，我竟然回答得不知所措，所以赶紧学习脑补一下</p><h3 id="关于block为什么要使用copy修复符，首先我们要了解一下关于栈区和堆区的概念"><a href="#关于block为什么要使用copy修复符，首先我们要了解一下关于栈区和堆区的概念" class="headerlink" title="关于block为什么要使用copy修复符，首先我们要了解一下关于栈区和堆区的概念"></a>关于block为什么要使用copy修复符，首先我们要了解一下关于栈区和堆区的概念</h3><ul><li>内存的栈区：由编译器自动分配和释放，存放函数的参数值，局部变量的值等，其操作类似数据结构的栈。</li><li>内存的堆区：一般由程序员分配和释放，若程序员不释放，程序结束时可能有OS进行回收，注意这里的内存堆区与数据结构中的堆是两回事，分配方式倒是类似于链表。</li></ul><h3 id="关于为什么block是copy来修饰，这涉及到block作用域的问题"><a href="#关于为什么block是copy来修饰，这涉及到block作用域的问题" class="headerlink" title="关于为什么block是copy来修饰，这涉及到block作用域的问题"></a>关于为什么block是copy来修饰，这涉及到block作用域的问题</h3><p>首先，block是一个对象，所以block理论上是可以retain/release的，但是block在创建的时候它的内存默认是分配在栈（stack）上，而不是堆（heap）上的。所以它的作用域仅限创建时候的当前上下文（函数，方法，…)，当你在该作用域外调用该block时，程序就会崩溃，所以为什么block需要使用copy来修饰，其实目的就是为了把它从内存的栈上挪动到内存的堆上，把其作用域扩大。</p><ul><li>官方文档：</li></ul><p><img src="/2020/03/03/block为什么要用copy/copy_block.png" alt="Alt text"></p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul><li>一般情况下你不需要自行调用copy或者retain一个block，只有当你需要在block定义域以外的地方使用时才需要copy，copy将block从内存栈区移到堆区。</li><li>其实block使用copy是MRC留下来的也算是一个传统吧，在MRC下，如上述，在方法中的block创建在栈区，使用copy就能把他放到堆区，这样在作用域外调用block程序就不会奔溃。</li><li>在ARC下，使用copy与strong其实都一样，因为block的retain就是用copy来实现的，所以block使用copy还能装装逼，所以自己是从MRC下走过来的。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      前段时间因为打算换工作，本来以为我已经复习好做好面试的准备了...
+    
+    </summary>
+    
+      <category term="iOS" scheme="https://CoderLawrence.github.io/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="https://CoderLawrence.github.io/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS10自定义推送UI和推送内容（上）</title>
